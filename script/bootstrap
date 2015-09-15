@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -efu
+
+function main {
+  sudo easy_install pip
+  sudo pip install virtualenv
+}
+
+main "$@"
