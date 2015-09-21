@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+function main {
+  local phome="$1"; shift
+
+  pushd "$phome" > /dev/null
+  mkdir -p "$phome/vendor/virtualenv"
+  virtualenv "$phome/vendor/virtualenv"
+  set +u; source "$phome/vendor/virtualenv/bin/activate"; set -u
+  pip install -r requirements.txt
+  popd > /dev/null
+}
+
+source sub "$0" "$@"
