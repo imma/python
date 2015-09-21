@@ -2,12 +2,18 @@
 
 function main {
   local phome="$1"; shift
+  local pth_cache="$1"; shift
+  local pth_env="$1"; shift
 
   pushd "$phome" > /dev/null
   mkdir -p "$phome/vendor/virtualenv"
   virtualenv "$phome/vendor/virtualenv"
   set +u; source "$phome/vendor/virtualenv/bin/activate"; set -u
-  pip install -r requirements.txt
+  if [[ "$#" == 0 ]]; then
+    pip install -r requirements.txt
+  else
+    eval "$@"
+  fi
   popd > /dev/null
 }
 
