@@ -10,7 +10,9 @@ function main {
   virtualenv "$phome/vendor/virtualenv"
   set +u; source "$phome/vendor/virtualenv/bin/activate"; set -u
   if [[ "$#" == 0 ]]; then
-    pip install -r requirements.txt
+    if [[ -f requirements.txt ]]; then
+      pip install -r requirements.txt
+    fi
   else
     eval "$@"
   fi
