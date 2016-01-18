@@ -3,6 +3,8 @@
 set -efu
 
 function main {
+  sudo aptitude update
+  sudo aptitude install -y python-setuptools python-dev
   sudo -H easy_install pip
   sudo -H pip install virtualenv --upgrade
 }
