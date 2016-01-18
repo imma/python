@@ -3,6 +3,10 @@
 set -efu
 
 function main {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+  PATH="$shome/bin:$shome/exec:$PATH"
+  source "$shome/script/profile"
+
   case "$(uname -s)" in
     Linux)
       sudo aptitude update
@@ -11,8 +15,8 @@ function main {
       ;;
   esac
 
-  sudo -H easy_install pip
-  sudo -H pip install virtualenv --upgrade
+  python "$shome/script/install-pip" --root "$shome/install"
+  pip install virtualenv --root "$shome/install" --upgrade
 }
 
 main "$@"
