@@ -9,9 +9,7 @@ function main {
 
   case "$(uname -s)" in
     Linux)
-      sudo aptitude update
       sudo aptitude install -y python-setuptools python-dev
-      sudo aptitude install -y libffi-dev libssl-dev # TODO belongs in a build block
       ;;
   esac
 
