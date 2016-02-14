@@ -2,9 +2,7 @@
 
 function profile {
   local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
-  PATH="$shome/bin:$shome/exec:$shome/install/usr/local/bin:$shome/install/usr/local/lib/python2.7/dist-packages:$PATH"
-
-  export PYTHONPATH="$shome/install/Library/Python/2.7/site-packages:$shome/install/usr/local/lib/python2.7/dist-packages"
+  PATH="$shome/bin:$shome/exec:$PATH"
 }
 
 profile

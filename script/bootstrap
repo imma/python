@@ -7,8 +7,8 @@ function main {
   pkg ensure lang/python27
 
   python2.7 "$shome/script/install-pip"
-  pip2.7 install --root "$shome/install" --upgrade virtualenv
-  pip2.7 install --root "$shome/install" --upgrade pyopenssl ndg-httpsclient pyasn1
+  pip2.7 install --upgrade virtualenv
+  pip2.7 install --upgrade pyopenssl ndg-httpsclient pyasn1
 }
 
 main "$@"
