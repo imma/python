@@ -7,11 +7,11 @@ function main {
 
   pushd "$phome" > /dev/null
   mkdir -p "$phome/vendor/virtualenv"
-  virtualenv "$phome/vendor/virtualenv"
+  virtualenv -p python2.7 "$phome/vendor/virtualenv"
   set +u; source "$phome/vendor/virtualenv/bin/activate"; set -u
   if [[ "$#" == 0 ]]; then
     if [[ -f requirements.txt ]]; then
-      pip install -r requirements.txt
+      pip2.7 install -r requirements.txt
     fi
   else
     eval "$@"
