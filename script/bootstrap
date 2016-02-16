@@ -5,6 +5,7 @@ function main {
   source "$shome/script/profile"
 
   pkg ensure lang/python27
+  pkg ensure textproc/py27-expat textproc/py-expat
 
   python2.7 "$shome/script/install-pip"
   pip2.7 install --upgrade virtualenv
