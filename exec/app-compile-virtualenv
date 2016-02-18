@@ -5,13 +5,16 @@ function main {
   local pth_cache="$1"; shift
   local pth_env="$1"; shift
 
+  : ${PYTHON:=python2.7} # there is no python, just python2.7
+  : ${PIP:=pip} # there is a pip along with pip2.7
+
   pushd "$phome" > /dev/null
   mkdir -p "$phome/vendor/virtualenv"
-  virtualenv -p python2.7 "$phome/vendor/virtualenv"
+  virtualenv -p "${PYTHON}" "$phome/vendor/virtualenv"
   set +u; source "$phome/vendor/virtualenv/bin/activate"; set -u
   if [[ "$#" == 0 ]]; then
     if [[ -f requirements.txt ]]; then
-      pip2.7 install -r requirements.txt
+      "$PIP" install -vvv -r requirements.txt
     fi
   else
     eval "$@"
