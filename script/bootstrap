@@ -6,9 +6,10 @@ function main {
 
   pkg ensure security/openssl
   pkg ensure lang/python27
+  pkg ensure devel/py27-pip devel/py-pip
   pkg ensure textproc/py27-expat textproc/py-expat
 
-  python2.7 "$shome/script/install-pip"
+  #python2.7 "$shome/script/install-pip"
   pip2.7 install --upgrade virtualenv
   pip2.7 install --upgrade pyopenssl ndg-httpsclient pyasn1
 }
