@@ -14,7 +14,7 @@ function main {
   set +u; source "$phome/vendor/virtualenv/bin/activate"; set -u
   if [[ "$#" == 0 ]]; then
     if [[ -f requirements.txt ]]; then
-      "$PIP" install -vvv -r requirements.txt
+      "$PIP" install -r requirements.txt
     fi
   else
     eval "$@"
