@@ -6,6 +6,7 @@ function main {
 
   pkg ensure security/openssl
   pkg ensure lang/python35
+  pkg ensure devel/py35-setuptools devel/py-setuptools
   pkg ensure devel/py35-pip devel/py-pip
   pkg ensure textproc/py35-expat textproc/py-expat
 
