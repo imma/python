@@ -5,7 +5,7 @@ function main {
   local pth_cache="$1"; shift
   local pth_env="$1"; shift
 
-  : ${PYTHON:=python2.7} # there is no python, just python2.7
+  : ${PYTHON:=python3.5}
   : ${PIP:=pip} # there is a pip along with pip2.7
 
   pushd "$phome" > /dev/null
