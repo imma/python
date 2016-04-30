@@ -3,8 +3,6 @@
 function profile {
   local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
   PATH="$shome/exec:$PATH"
-
-  export PYTHON_VERSION_DEFAULT=35
 }
 
 profile
