@@ -11,11 +11,11 @@ function main {
     pkg ensure lang/python${PYTHON_VERSION_DEFAULT}
     pkg ensure devel/py${PYTHON_VERSION_DEFAULT}-setuptools devel/py-setuptools
     pkg ensure devel/py${PYTHON_VERSION_DEFAULT}-pip devel/py-pip
+    pkg ensure devel/py${PYTHON_VERSION_DEFAULT}-virtualenv devel/py-virtualenv
     pkg ensure textproc/py${PYTHON_VERSION_DEFAULT}-expat textproc/py-expat
 
     PIP_VERSION_DEFAULT="$(echo "${PYTHON_VERSION_DEFAULT}" | perl -pe 's{(.)}{$1.}')"
     pip${PIP_VERSION_DEFAULT} install --upgrade pip
-    pip${PIP_VERSION_DEFAULT} install --upgrade virtualenv
     pip${PIP_VERSION_DEFAULT} install --upgrade pyopenssl ndg-httpsclient pyasn1
   done
 }

@@ -6,11 +6,11 @@ function main {
   local pth_env="$1"; shift
 
   : ${PYTHON:=python3.5}
-  : ${PIP:=pip} # there is a pip along with pip2.7
-
+  : ${PIP:=pip3.5}
+  : ${VENV:=pyvenv3.5}
   pushd "$phome" > /dev/null
   mkdir -p "$phome/vendor/virtualenv"
-  virtualenv -p "${PYTHON}" "$phome/vendor/virtualenv"
+  "${VENV}" -p "${PYTHON}" "$phome/vendor/virtualenv"
   set +u; source "$phome/vendor/virtualenv/bin/activate"; set -u
   if [[ "$#" == 0 ]]; then
     if [[ -f requirements.txt ]]; then
