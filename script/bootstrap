@@ -5,14 +5,18 @@ function main {
   source "$shome/script/profile"
 
   pkg ensure security/openssl
-  pkg ensure lang/python35
-  pkg ensure devel/py35-setuptools devel/py-setuptools
-  pkg ensure devel/py35-pip devel/py-pip
-  pkg ensure textproc/py35-expat textproc/py-expat
 
-  pip3.5 install --upgrade pip
-  pip3.5 install --upgrade virtualenv
-  pip3.5 install --upgrade pyopenssl ndg-httpsclient pyasn1
+  for PYTHON_VERSION_DEFAULT in 35 27; do
+    pkg ensure lang/python${PYTHON_VERSION_DEFAULT}
+    pkg ensure devel/py${PYTHON_VERSION_DEFAULT}-setuptools devel/py-setuptools
+    pkg ensure devel/py${PYTHON_VERSION_DEFAULT}-pip devel/py-pip
+    pkg ensure textproc/py${PYTHON_VERSION_DEFAULT}-expat textproc/py-expat
+
+    PIP_VERSION_DEFAULT="$(echo "${PYTHON_VERSION_DEFAULT}" | perl -pe 's{(.)}{$1.}')"
+    pip${PIP_VERSION_DEFAULT} install --upgrade pip
+    pip${PIP_VERSION_DEFAULT} install --upgrade virtualenv
+    pip${PIP_VERSION_DEFAULT} install --upgrade pyopenssl ndg-httpsclient pyasn1
+  done
 }
 
 main "$@"
