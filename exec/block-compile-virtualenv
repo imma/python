@@ -7,11 +7,12 @@ function main {
 
   : ${PYTHON:=python3.5}
   : ${PIP:=pip3.5}
-  : ${VENV:=pyvenv3.5}
+  : ${VENV:=pyvenv-3.5}
   pushd "$phome" > /dev/null
   mkdir -p "$phome/vendor/virtualenv"
-  "${VENV}" -p "${PYTHON}" "$phome/vendor/virtualenv"
+  ${VENV} "$phome/vendor/virtualenv"
   set +u; source "$phome/vendor/virtualenv/bin/activate"; set -u
+  "${PIP}" install --upgrade pip
   if [[ "$#" == 0 ]]; then
     if [[ -f requirements.txt ]]; then
       "$PIP" install -r requirements.txt
