@@ -1,11 +1,12 @@
 #!/usr/bin/env python2.7
+
 if __name__ == '__main__':
     import sys
     rc = 1
     try:
-        import venv
-        venv.main()
+        import virtualenv
+        virtualenv.main()
         rc = 0
     except Exception as e:
-        print('Error: %s' % e, file=sys.stderr)
+        sys.stderr.write('Error: %s\n' % e)
     sys.exit(rc)
