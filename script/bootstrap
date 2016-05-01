@@ -8,10 +8,19 @@ function main {
 
   for PYTHON_VERSION_DEFAULT in 35 27; do
     export PYTHON_VERSION_DEFAULT
+    pkg clean lang/python${PYTHON_VERSION_DEFAULT}
     pkg ensure lang/python${PYTHON_VERSION_DEFAULT}
+
+    pkg clean devel/py-setuptools
     pkg ensure devel/py${PYTHON_VERSION_DEFAULT}-setuptools devel/py-setuptools
+
+    pkg clean devel/py-pip
     pkg ensure devel/py${PYTHON_VERSION_DEFAULT}-pip devel/py-pip
+
+    pkg clean devel/py-virtualenv
     pkg ensure devel/py${PYTHON_VERSION_DEFAULT}-virtualenv devel/py-virtualenv
+
+    pkg clean textproc/py-expat
     pkg ensure textproc/py${PYTHON_VERSION_DEFAULT}-expat textproc/py-expat
 
     PIP_VERSION_DEFAULT="$(echo "${PYTHON_VERSION_DEFAULT}" | perl -pe 's{(.)}{$1.}')"
