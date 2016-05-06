@@ -23,6 +23,9 @@ function main {
     pkg clean textproc/py-expat
     pkg ensure textproc/py${PYTHON_VERSION_DEFAULT}-expat textproc/py-expat
 
+    pkg clean textproc/py-yaml
+    pkg ensure textproc/py${PYTHON_VERSION_DEFAULT}-yaml textproc/py-yaml
+
     PIP_VERSION_DEFAULT="$(echo "${PYTHON_VERSION_DEFAULT}" | perl -pe 's{(.)}{$1.}')"
     pip${PIP_VERSION_DEFAULT} install --upgrade pip
     pip${PIP_VERSION_DEFAULT} install --upgrade pyopenssl ndg-httpsclient pyasn1
