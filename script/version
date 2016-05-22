@@ -4,10 +4,13 @@ function version {
   local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
   source "$shome/script/profile"
 
-  local ver_python="$(python --version 2>&1 | awk 'NR == 1 {print $2}')"
+  local ver_python27="$(python2.7 --version 2>&1 | awk 'NR == 1 {print $2}')"
+  local ver_python35="$(python3.5 --version 2>&1 | awk 'NR == 1 {print $2}')"
+
   jq -n \
-    --arg python "$ver_python" \
-    '{python: $python}'
+    --arg python27 "$ver_python27" \
+    --arg python35 "$ver_python35" \
+    '{python27: $python27, python35: $python35}'
 }
 
 version "$@"
