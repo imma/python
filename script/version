@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+function version {
+  local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  local ver_python="$(python --version 2>&1 | awk 'NR == 1 {print $2}')"
+  jq -n \
+    --arg python "$ver_python" \
+    '{python: $python}'
+}
+
+version "$@"
