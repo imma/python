@@ -5,6 +5,8 @@ function main {
   local pth_cache="$1"; shift
   local pth_env="$1"; shift
 
+  PATH="$PKG_HOME/install/bin:$PATH"
+
   : ${PYTHON:=python3.5}
   : ${PIP:=pip3.5}
   : ${VENV:=pyvenv-3.5}
