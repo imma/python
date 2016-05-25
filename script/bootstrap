@@ -4,6 +4,8 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
+  PATH="$PKG_HOME/install/bin:$PATH"
+
   pkg ensure security/openssl
 
   for PYTHON_VERSION_DEFAULT in 35 27; do
