@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function version {
-  local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+  local shome="${_python_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   source "$shome/script/profile"
 
   local ver_python27="$(python2.7 --version 2>&1 | awk 'NR == 1 {print $2}')"
