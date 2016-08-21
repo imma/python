@@ -34,7 +34,7 @@ function main {
     pkg ensure databases/py${PYTHON_VERSION_DEFAULT}-sqlite3 databases/py-sqlite3
 
     PIP_VERSION_DEFAULT="$(echo "${PYTHON_VERSION_DEFAULT}" | perl -pe 's{(.)}{$1.}')"
-    pip${PIP_VERSION_DEFAULT} install --upgrade pip
+    pip${PIP_VERSION_DEFAULT} install --upgrade pip virtualenv
     pip${PIP_VERSION_DEFAULT} install --upgrade pyopenssl ndg-httpsclient pyasn1
   done
 }
