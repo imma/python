@@ -1,6 +1,6 @@
 {
   "require": [
-    "cache",
+    "proxy",
     "build-essential",
     "pkgsrc"
   ]
