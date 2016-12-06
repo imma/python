@@ -14,10 +14,10 @@ function main {
   mkdir -p "$phome/vendor/virtualenv"
   ${VENV} "$phome/vendor/virtualenv"
   set +u; source "$phome/vendor/virtualenv/bin/activate"; set -u
-  "${PIP}" install --proxy $http_proxy --no-cache-dir --upgrade pip
+  "${PIP}" install --no-cache-dir --upgrade pip
   if [[ "$#" == 0 ]]; then
     if [[ -f requirements.txt ]]; then
-      "$PIP" install --proxy http_proxy --no-cache-dir -r requirements.txt
+      "$PIP" install --no-cache-dir -r requirements.txt
     fi
   else
     eval "$@"
