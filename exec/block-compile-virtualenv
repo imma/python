@@ -5,6 +5,8 @@ function main {
   local pth_cache="$1"; shift
   local pth_env="$1"; shift
 
+  unset http_proxy https_proxy
+
   PATH="$PKG_HOME/install/bin:$PATH"
 
   : ${PYTHON:=python3.5}
