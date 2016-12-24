@@ -1,6 +1,5 @@
 {
   "require": [
-    "proxy",
     "build-essential",
     "pkgsrc"
   ]
