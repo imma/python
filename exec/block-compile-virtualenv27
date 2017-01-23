@@ -8,7 +8,7 @@ function main {
   local pth_cache="$1"; shift
   local pth_env="$1"; shift
 
-  env PYTHON=python2.7 PIP=pip2.7 VENV=pyvenv-2.7 block compile virtualenv
+  env PYTHON=python2.7 PIP=pip2.7 VENV=pyvenv-2.7 block compile virtualenv "$@"
 }
 
 source sub "$0" "$@"
