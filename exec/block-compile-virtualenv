@@ -34,10 +34,4 @@ function main {
   popd > /dev/null
 }
 
-case "$(uname -s)" in
-	Darwin)
-		export LANG=C
-		;;
-esac
-
 source sub "$0" "$@"
