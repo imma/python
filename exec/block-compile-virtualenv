@@ -8,9 +8,9 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   PATH="$PKG_HOME/install/bin:$PATH"
 
-  : ${PYTHON:=python3.5}
-  : ${PIP:=pip3.5}
-  : ${VENV:=pyvenv-3.5}
+  : ${PYTHON:=python3.6}
+  : ${PIP:=pip3.6}
+  : ${VENV:=pyvenv-3.6}
   pushd "$phome" > /dev/null
   mkdir -p "$phome/vendor/virtualenv"
   ${VENV} "$phome/vendor/virtualenv"

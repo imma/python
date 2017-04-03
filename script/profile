@@ -4,7 +4,7 @@ function _python_profile {
   local shome="${_python_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   PATH="$shome/exec:$PATH"
 
-  export PYTHON_VERSION_DEFAULT=35
+  export PYTHON_VERSION_DEFAULT=36
 }
 
 _python_profile

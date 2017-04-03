@@ -7,17 +7,11 @@ function main {
   export PYTHON_VERSION_DEFAULT="${0##*py}"
   export PIP_VERSION_DEFAULT="$(echo "${PYTHON_VERSION_DEFAULT}" | perl -pe 's{(.)}{$1.}')"
 
-  # TODO DRY
   case "$PYTHON_VERSION_DEFAULT" in
-    27)
-      export PYTHON="python2.7"
-      export PIP="pip2.7"
-      export VENV="pyvenv-2.7"
-      ;;
-    35)
-      export PYTHON="python3.5"
-      export PIP="pip3.5"
-      export VENV="pyvenv-3.5"
+    36)
+      export PYTHON="python3.6"
+      export PIP="pip3.6"
+      export VENV="pyvenv-3.6"
       ;;
   esac
 

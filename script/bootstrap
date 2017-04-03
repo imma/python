@@ -10,7 +10,7 @@ function main {
 
   rm -rf "$WRKOBJDIR"
 
-  for PYTHON_VERSION_DEFAULT in 35 27; do
+  for PYTHON_VERSION_DEFAULT in 36 27; do
     export PYTHON_VERSION_DEFAULT
     pkg clean lang/python${PYTHON_VERSION_DEFAULT}
     pkg ensure lang/python${PYTHON_VERSION_DEFAULT}
