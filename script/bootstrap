@@ -38,6 +38,7 @@ function main {
     export PYTHON_VERSION_DEFAULT
     PIP_VERSION_DEFAULT="$(echo "${PYTHON_VERSION_DEFAULT}" | perl -pe 's{(.)}{$1.}')"
     pip${PIP_VERSION_DEFAULT} install --upgrade pip virtualenv
+    pip${PIP_VERSION_DEFAULT} install --upgrade pyopenssl ndg-httpsclient pyasn1
   done
 }
 
