@@ -10,7 +10,7 @@ function main {
 
   : ${PYTHON:=python3.6}
   : ${PIP:=pip3.6}
-  : ${VENV:=pyvenv-3.6}
+  : ${VENV:=python3.6 -m venv}
   pushd "$phome" > /dev/null
   mkdir -p "$phome/vendor/virtualenv"
   ${VENV} "$phome/vendor/virtualenv"
