@@ -8,9 +8,9 @@ function main {
 
   pkg ensure security/openssl
 
-  rm -rf "$WRKOBJDIR"
-
   for PYTHON_VERSION_DEFAULT in 36 27; do
+    rm -rf "$WRKOBJDIR"
+
     export PYTHON_VERSION_DEFAULT
     pkg clean lang/python${PYTHON_VERSION_DEFAULT}
     pkg ensure lang/python${PYTHON_VERSION_DEFAULT}
