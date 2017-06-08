@@ -15,7 +15,7 @@ function main {
   mkdir -p "$phome/vendor/virtualenv"
   ${VENV} "$phome/vendor/virtualenv"
   set +u; source "$phome/vendor/virtualenv/bin/activate"; set -u
-  "${PIP}" install --disable-pip-version-check --no-cache-dir --upgrade pip wheel
+  "${PIP}" install --no-cache-dir pip wheel
   if [[ "$#" == 0 ]]; then
     if [[ -f requirements.txt ]]; then
       local pth_wheel="$(echo "$phome" | perl -pe 's{[^\w]+}{-}g')"
@@ -24,9 +24,9 @@ function main {
       pth_wheel="/data/cache/wheels/${ID_INSTALL}/${pth_wheel}"
       if [[ ! -d "$pth_wheel" ]]; then
         mkdir -vp "$pth_wheel"
-        "$PIP" wheel --disable-pip-version-check --no-cache-dir --wheel-dir="$pth_wheel" -r requirements.txt
+        "$PIP" wheel --no-cache-dir --wheel-dir="$pth_wheel" -r requirements.txt
       fi
-      "$PIP" install --disable-pip-version-check --no-cache-dir --use-wheel --find-links="$pth_wheel" -r requirements.txt
+      "$PIP" install --no-cache-dir --use-wheel --find-links="$pth_wheel" -r requirements.txt
     fi
   else
     eval "$@"

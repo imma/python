@@ -5,6 +5,7 @@ function _python_profile {
   PATH="$shome/exec:$PATH"
 
   export PYTHON_VERSION_DEFAULT=36
+  export PIP_DISABLE_PIP_VERSION_CHECK=1
 }
 
 _python_profile
