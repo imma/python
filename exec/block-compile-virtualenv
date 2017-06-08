@@ -8,6 +8,7 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   PATH="$PKG_HOME/install/bin:$PATH"
 
+  : ${PIP_WHEEL:=}
   : ${PYTHON:=python3.6}
   : ${PIP:=pip3.6}
   : ${VENV:=python3.6 -m venv}
@@ -22,10 +23,13 @@ function main {
       pth_wheel="${pth_wheel#-}"
       pth_wheel="${pth_wheel%-}"
       pth_wheel="/data/cache/wheels/${ID_INSTALL}/${pth_wheel}"
-      if [[ ! -d "$pth_wheel" ]]; then
-        mkdir -vp "$pth_wheel"
+
+      mkdir -vp "$pth_wheel"
+
+      if [[ -n "${PIP_WHEEL}" ]]; then
         "$PIP" wheel --no-cache-dir --wheel-dir="$pth_wheel" -r requirements.txt
       fi
+
       "$PIP" install --no-cache-dir --use-wheel --find-links="$pth_wheel" -r requirements.txt
     fi
   else
