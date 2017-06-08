@@ -4,7 +4,8 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  env PIP_WHEEL=1 block compile virtualenv "$@"
+  shift; shift; shift
+  env PIP_WHEEL=1 block compile virtualenv
 }
 
 source sub "$0" "$@"
