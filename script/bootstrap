@@ -21,6 +21,9 @@ function main {
     pkg clean devel/py-pip
     pkg ensure devel/py${PYTHON_VERSION_DEFAULT}-pip devel/py-pip
 
+    pkg clean devel/py-wheel
+    pkg ensure devel/py${PYTHON_VERSION_DEFAULT}-wheel devel/py-wheel
+
     pkg clean devel/py-virtualenv
     pkg ensure devel/py${PYTHON_VERSION_DEFAULT}-virtualenv devel/py-virtualenv
 
@@ -40,8 +43,21 @@ function main {
   for PYTHON_VERSION_DEFAULT in 36 27; do
     export PYTHON_VERSION_DEFAULT
     PIP_VERSION_DEFAULT="$(echo "${PYTHON_VERSION_DEFAULT}" | perl -pe 's{(.)}{$1.}')"
-    pip${PIP_VERSION_DEFAULT} install --upgrade pip virtualenv
-    pip${PIP_VERSION_DEFAULT} install --upgrade pyopenssl ndg-httpsclient pyasn1
+
+		local pth_wheel="$(echo "$shome" | perl -pe 's{[^\w]+}{-}g')"
+		pth_wheel="${pth_wheel#-}"
+		pth_wheel="${pth_wheel%-}"
+		pth_wheel="/data/cache/wheels/${ID_INSTALL}/${pth_wheel}"
+
+		mkdir -vp "$pth_wheel"
+
+		PIP="pip${PIP_VERSION_DEFAULT}"
+
+		if [[ -n "${PIP_WHEEL}" ]]; then
+			"$PIP" wheel --no-cache-dir --wheel-dir="$pth_wheel" -r requirements.txt-${PIP_VERSION_DEFAULT}
+		fi
+
+    "$PIP" install --no-cache-dir --use-wheel --find-links="$pth_wheel" -r requirements.txt-${PIP_VERSION_DEFAULT}
   done
 }
 
