@@ -22,7 +22,7 @@ function main {
       local pth_wheel="$(echo "$phome" | perl -pe 's{[^\w]+}{-}g')"
       pth_wheel="${pth_wheel#-}"
       pth_wheel="${pth_wheel%-}"
-      pth_wheel="/data/cache/wheels/${ID_INSTALL}/${pth_wheel}"
+      pth_wheel="${CACHE_DIR}/wheels/${ID_INSTALL}/${pth_wheel}"
 
       mkdir -vp "$pth_wheel"
 
