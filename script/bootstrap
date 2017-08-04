@@ -27,6 +27,9 @@ function main {
     pkg clean devel/py-virtualenv
     pkg ensure devel/py${PYTHON_VERSION_DEFAULT}-virtualenv devel/py-virtualenv
 
+    pkg clean devel/py-curses
+    pkg ensure devel/py${PYTHON_VERSION_DEFAULT}-curses devel/py-curses
+
     pkg clean textproc/py-expat
     pkg ensure textproc/py${PYTHON_VERSION_DEFAULT}-expat textproc/py-expat
 
