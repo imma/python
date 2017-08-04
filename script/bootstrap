@@ -36,8 +36,8 @@ function main {
     pkg clean databases/py-sqlite3
     pkg ensure databases/py${PYTHON_VERSION_DEFAULT}-sqlite3 databases/py-sqlite3
 
-    pkg clean databases/py-cElementTree
-    pkg ensure databases/py${PYTHON_VERSION_DEFAULT}-cElementTree databases/py-cElementTree
+    pkg clean textproc/py-cElementTree
+    pkg ensure textproc/py${PYTHON_VERSION_DEFAULT}-cElementTree textproc/py-cElementTree
   done
 
   for PYTHON_VERSION_DEFAULT in 36 27; do
