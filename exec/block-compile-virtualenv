@@ -11,7 +11,7 @@ function main {
   : ${PIP_WHEEL:=}
   : ${PYTHON:=python3.6}
   : ${PIP:=pip3.6}
-  : ${VENV:=python3.6 -m venv}
+  : ${VENV:=virtualenv-3.6}
   pushd "$phome" > /dev/null
   mkdir -p "$phome/vendor/virtualenv"
   ${VENV} "$phome/vendor/virtualenv"
