@@ -21,6 +21,9 @@ function main {
     pkg clean devel/py-pip
     pkg ensure devel/py${PYTHON_VERSION_DEFAULT}-pip devel/py-pip
 
+    pkg clean devel/py-virtualenv
+    pkg ensure devel/py${PYTHON_VERSION_DEFAULT}-virtualenv devel/py-virtualenv
+
     pkg clean devel/py-wheel
     pkg ensure devel/py${PYTHON_VERSION_DEFAULT}-wheel devel/py-wheel
 
