@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+function main {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  if ! type -P virtualenv-2.7 >/dev/null; the
+    return 1
+  fi
+
+  if ! type -P virtualenv-3.6 >/dev/null; the
+    return 1
+  fi
+
+  if [[ ! -x "$(python -m site --user-base)/bin/virtualenv" ]]; then
+    reutrn 1
+  fi
+
+  return 0
+}
+
+source sub "$0" "$@"

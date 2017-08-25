@@ -62,6 +62,12 @@ function main {
 
     "$PIP" install --no-cache-dir --use-wheel --find-links="$pth_wheel" -r requirements.txt-${PIP_VERSION_DEFAULT}
   done
+
+  PATH="$(python -m site --user-base)/bin:$PATH"
+  curl -o get-pip.py https://bootstrap.pypa.io/get-pip.py
+  python get-pip.py --user --force-reinstall
+  rm -f get-pip.py
+  pip install --user --upgrade --force-reinstall pip virtualenv
 }
 
 main "$@"
