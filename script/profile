@@ -6,6 +6,12 @@ function _python_profile {
 
   export PYTHON_VERSION_DEFAULT=36
   export PIP_DISABLE_PIP_VERSION_CHECK=1
+
+  case "$(uname -s)" in
+    Darwin)
+      PATH="$(python -m site --user-base)/bin:$PATH"
+      ;;
+  esac
 }
 
 _python_profile
