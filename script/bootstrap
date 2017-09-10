@@ -4,10 +4,10 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  curl -o get-pip.py https://bootstrap.pypa.io/get-pip.py
-  python get-pip.py --user --force-reinstall
-  rm -f get-pip.py
-  pip install --user --upgrade --force-reinstall pip virtualenv
+  #curl -o get-pip.py https://bootstrap.pypa.io/get-pip.py
+  #python get-pip.py --user --force-reinstall
+  #rm -f get-pip.py
+  #pip install --user --upgrade --force-reinstall pip virtualenv
 
   PATH="$PKG_HOME/install/bin:$PATH"
 
