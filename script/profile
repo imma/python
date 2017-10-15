@@ -7,7 +7,7 @@ function _python_profile {
   export PYTHON_VERSION_DEFAULT=36
   export PIP_DISABLE_PIP_VERSION_CHECK=1
 
-  case "$(uname -s)" in
+  case "${DISTRIB_ID}" in
     Darwin)
       PATH="$(python -m site --user-base)/bin:$PATH"
       ;;

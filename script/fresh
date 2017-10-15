@@ -12,7 +12,7 @@ function main {
     return 1
   fi
 
-  case "$(uname -s)" in
+  case "${DISTRIB_ID}" in
     Darwin)
       if [[ ! -x "$(python -m site --user-base)/bin/virtualenv" ]]; then
         return 1
