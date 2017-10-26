@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+function main {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  local phome="$1"; shift
+  local pth_cache="$1"; shift
+  local pth_env="$1"; shift
+
+  pipenv36 install --three --python "$(which python3.6)" "$@"
+}
+
+source sub "$0" "$@"
