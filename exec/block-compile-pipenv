@@ -9,6 +9,9 @@ function main {
   local pth_env="$1"; shift
 
   export PATH="$shome/vendor/virtualenv/bin:$PATH"
+  if [[ "$#" == 0 ]]; then
+    set -- --three
+  fi
   pipenv install "$@"
 }
 
