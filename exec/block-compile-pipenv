@@ -25,7 +25,7 @@ function main {
   pipenv "$@"
 
   if [[ ! -L Pipfile.lock ]]; then
-    rsync -ia Pipfile.lock "${BOARD_PATH}/Pipfile.lock.${nm_block}" 2>/dev/null || true # TODO clean up
+    rsync -ia Pipfile.lock "${BOARD_PATH}/Pipfile.lock.${nm_block}" 2>/dev/null
   fi
   ln -nfs "${BOARD_PATH}/Pipfile.lock.${nm_block}" "Pipfile.lock"
 }
