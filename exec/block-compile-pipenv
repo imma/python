@@ -18,14 +18,14 @@ function main {
   local nm_block="${phome##*/}"
 
   if [[ ! -L Pipfile.lock ]]; then
-    rsync -ia Pipfile.lock "${BOARD_PATH}/Pipfile.lock.${nm_block}"
+    rsync -ia Pipfile.lock "${BOARD_PATH}/Pipfile.lock.${nm_block}" 2>/dev/null || true # TODO clean up
   fi
   ln -nfs "${BOARD_PATH}/Pipfile.lock.${nm_block}" "Pipfile.lock"
 
   pipenv "$@"
 
   if [[ ! -L Pipfile.lock ]]; then
-    rsync -ia Pipfile.lock "${BOARD_PATH}/Pipfile.lock.${nm_block}"
+    rsync -ia Pipfile.lock "${BOARD_PATH}/Pipfile.lock.${nm_block}" 2>/dev/null || true # TODO clean up
   fi
   ln -nfs "${BOARD_PATH}/Pipfile.lock.${nm_block}" "Pipfile.lock"
 }
