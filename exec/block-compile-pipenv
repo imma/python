@@ -9,10 +9,25 @@ function main {
   local pth_env="$1"; shift
 
   export PATH="$shome/vendor/virtualenv/bin:$PATH"
+
   if [[ "$#" == 0 ]]; then
-    set -- --three
+    set -- install --three
   fi
-  pipenv install "$@"
+
+  cd "$phome"
+  local nm_block="${phome##*/}"
+
+  if [[ ! -L Pipfile.lock ]]; then
+    rsync -ia Pipfile.lock "${BOARD_PATH}/Pipfile.lock.${nm_block}"
+  fi
+  ln -nfs "${BOARD_PATH}/Pipfile.lock.${nm_block}" "Pipfile.lock"
+
+  pipenv "$@"
+
+  if [[ ! -L Pipfile.lock ]]; then
+    rsync -ia Pipfile.lock "${BOARD_PATH}/Pipfile.lock.${nm_block}"
+  fi
+  ln -nfs "${BOARD_PATH}/Pipfile.lock.${nm_block}" "Pipfile.lock"
 }
 
 source sub "$0" "$@"
