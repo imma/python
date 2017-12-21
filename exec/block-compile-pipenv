@@ -13,10 +13,10 @@ function main {
   if [[ "$#" == 0 ]]; then
     case "$(python --version 2>&1 | awk '{print $2}')" in
       2.*)
-        set -- install --two
+        set -- install --two --ignore-pipfile
         ;;
       3.*)
-        set -- install --three
+        set -- install --three --ignore-pipfile
         ;;
       esac
   fi
