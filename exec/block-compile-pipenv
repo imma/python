@@ -24,20 +24,13 @@ function main {
   cd "$phome"
   local nm_block="${phome##*/}"
 
-  if [[ ! -L Pipfile.lock ]]; then
-    if [[ -f Pipfle.lock ]]; then
-      cat Pipfile.lock | jq -r '.default[] |= del(.hashes)' > "${BOARD_PATH}/Pipfile.lock.${nm_block}"
-    fi
+  if [[ -f "${BOARD_PATH}/Pipfile.lock.${nm_block}" ]]; then
+    ln -nfs "${BOARD_PATH}/Pipfile.lock.${nm_block}" "Pipfile.lock"
   fi
-  ln -nfs "${BOARD_PATH}/Pipfile.lock.${nm_block}" "Pipfile.lock"
 
   pipenv "$@"
-
-  if [[ ! -L Pipfile.lock ]]; then
-    if [[ -f Pipfle.lock ]]; then
-      cat Pipfile.lock | jq -r '.default[] |= del(.hashes)' > "${BOARD_PATH}/Pipfile.lock.${nm_block}"
-    fi
-  fi
+  cat Pipfile.lock | jq -r '.default[] |= del(.hashes)' > 1
+  mv 1 "${BOARD_PATH}/Pipfile.lock.${nm_block}"
   ln -nfs "${BOARD_PATH}/Pipfile.lock.${nm_block}" "Pipfile.lock"
 }
 
