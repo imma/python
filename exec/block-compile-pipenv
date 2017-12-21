@@ -11,21 +11,32 @@ function main {
   export PATH="$shome/vendor/virtualenv/bin:$PATH"
 
   if [[ "$#" == 0 ]]; then
-    set -- install --three
+    case "$(python --version 2>&1 | awk '{print $2}')" in
+      2.*)
+        set -- install --two
+        ;;
+      3.*)
+        set -- install --three
+        ;;
+      esac
   fi
 
   cd "$phome"
   local nm_block="${phome##*/}"
 
   if [[ ! -L Pipfile.lock ]]; then
-    rsync -ia Pipfile.lock "${BOARD_PATH}/Pipfile.lock.${nm_block}" 2>/dev/null || true # TODO clean up
+    if [[ -f Pipfle.lock ]]; then
+      cat Pipfile.lock | jq -r '.default[] |= del(.hashes)' > "${BOARD_PATH}/Pipfile.lock.${nm_block}"
+    fi
   fi
   ln -nfs "${BOARD_PATH}/Pipfile.lock.${nm_block}" "Pipfile.lock"
 
   pipenv "$@"
 
   if [[ ! -L Pipfile.lock ]]; then
-    rsync -ia Pipfile.lock "${BOARD_PATH}/Pipfile.lock.${nm_block}" 2>/dev/null
+    if [[ -f Pipfle.lock ]]; then
+      cat Pipfile.lock | jq -r '.default[] |= del(.hashes)' > "${BOARD_PATH}/Pipfile.lock.${nm_block}"
+    fi
   fi
   ln -nfs "${BOARD_PATH}/Pipfile.lock.${nm_block}" "Pipfile.lock"
 }
