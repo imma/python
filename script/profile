@@ -5,6 +5,11 @@ function _python_profile {
   PATH="$shome/exec:$PATH"
 
   export PIP_DISABLE_PIP_VERSION_CHECK=1
+  export PIPENV_HIDE_EMOJIS=1
+  export PIPENV_NOSPIN=1
+  export PIPENV_SKIP_VALIDATION=1
+  export PIPENV_COLORBLIND=1
+  export PIPENV_MAX_SUBPROCESS=1
 }
 
 _python_profile
